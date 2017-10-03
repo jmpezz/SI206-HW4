@@ -125,11 +125,6 @@ if __name__ == "__main__":
 #########
 
 
-
-
-
-
-
 ##**##**##**##@##**##**##**## # DO NOT CHANGE OR DELETE THIS COMMENT LINE -- we use it for grading your file
 ###############################################
 
@@ -137,19 +132,58 @@ if __name__ == "__main__":
 
 class CardTests(unittest.TestCase):
 
-	def rank_cardtest(self):
-		c = Card(rank = 12)
-		self.assertEqual(c.rank, "Queen")
+	def test_queen(self):
+		card = Card(rank = 12)
+		self.assertEqual(card.rank, "Queen")
 
 
-	def rank_cardtest1(self):
-		c = Card(rank = 1)
-		self.assertEqual(c.rank, "Ace")
+	def test_ace(self):
+		card = Card(rank = 1)
+		self.assertEqual(card.rank, "Ace")
 
-	def rank_cardtest2(self):
-		c = Card(rank = 3)
-		self.assertEqual(c.rank, 3)
+	def test_three(self):
+		card = Card(rank = 3)
+		self.assertEqual(card.rank, 3)
 
+	def test_clubs(self):
+		card = Card(suit = 1)
+		self.assertEqual(card.suit, "Clubs")
+
+	def test_hearts(self):
+		card = Card(suit = 2)
+		self.assertEqual(card.suit, "Hearts")
+
+	def test_cardname(self):
+		card = Card()
+		self.assertEqual(card.suit_names, ["Diamonds","Clubs","Hearts","Spades"])
+
+	def test_cardname2(self):
+		card = Card(suit = 2, rank = 7)
+		self.assertEqual(str(card), "7 of Hearts")
+
+	def test_decknmbr(self):
+		deck = Deck()
+		self.assertEqual(len(deck.cards), 52)
+
+	def test_pop(self):
+		deck = Deck()
+		card = Card()
+		self.assertEqual(type(deck.pop_card()), type(card))
+
+	def test_wargame(self):
+		play_game = play_war_game()
+		self.assertEqual(len(play_game), 3)
+		self.assertEqual(type(play_game[0]), str)
+
+	#this test returns a string of the name of the card with a rank above 10
+	def test_name(self):
+		card = str(Card(suit = 2, rank = 12))
+		self.assertEqual(card, "Queen of Hearts")
+
+	#this test checks to see if all the ranks are in the deck
+	def test_rank(self):
+		card = Card()
+		self.assertEqual(card.rank_levels, [1,2,3,4,5,6,7,8,9,10,11,12,13])
 
 
 #############
