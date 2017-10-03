@@ -5,8 +5,8 @@ import unittest
 # Homework 3 - Code
 
 ##COMMENT YOUR CODE WITH:
-# Section Day/Time: 
-# People you worked with: 
+# Section Day/Time: Thursday, 6-7 pm
+# People you worked with: Maheen Kahn, David Piper
 
 ######### DO NOT CHANGE PROVIDED CODE #########
 ### Below is the same cards.py code you saw in lecture.
@@ -134,6 +134,21 @@ if __name__ == "__main__":
 ###############################################
 
 ### Write unit tests below this line for the cards code above.
+
+class CardTests(unittest.TestCase):
+
+	def rank_cardtest(self):
+		c = Card(rank = 12)
+		self.assertEqual(c.rank, "Queen")
+
+
+	def rank_cardtest1(self):
+		c = Card(rank = 1)
+		self.assertEqual(c.rank, "Ace")
+
+	def rank_cardtest2(self):
+		c = Card(rank = 3)
+		self.assertEqual(c.rank, 3)
 
 
 
